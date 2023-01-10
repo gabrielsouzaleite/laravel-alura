@@ -1,10 +1,22 @@
 <x-layout title="Nova Série">
-    <form action="/series/salvar" method="post">
+    <form action="{{ route('series.store') }}" method="post">
         @csrf
-        <div class="mb-3">
-            <label class="form-label" for="nome">Nome:</label>
-            <input class="form-control" type="text" id="nome" name="nome">
+
+        <div class="row mb-3">
+            <div class="col-8">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" autofocus id="nome" name="nome" class="form-control" @isset($nome)value="{{ old('nome') }}" @endisset>
+            </div>
+            <div class="col-2">
+                <label for="seasonsQty" class="form-label">N Temporadas:</label>
+                <input type="text" id="seasonsQty" name="seasonsQty" class="form-control" @isset($nome)value="{{ old('seasonsQty') }}" @endisset>
+            </div>
+            <div class="col-2">
+                <label for="episodesPerSeason" class="form-label">Eps / Temporada:</label>
+                <input type="text" id="episodesPerSeason" name="episodesPerSeason" class="form-control" @isset($nome)value="{{ old('episodesPerSeason') }}" @endisset>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Adicionar</button>
     </form>
+
 </x-layout>
